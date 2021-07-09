@@ -67,13 +67,3 @@ document.addEventListener('click', (event) => {
     }
 })
 
-// document.addEventListener('DOMContentLoaded', event => {
-//     const HTMLSearch = encodeURIComponent(document.getElementById('artist-name'))
-//     fetch(`https://rest.bandsintown.com/artists/${HTMLSearch}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
-//         return res.json()
-//     }).then(data => {
-//         console.log(data)
-//     }).catch(err => {
-//         console.error(err);
-//     })
-// })
