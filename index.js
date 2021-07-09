@@ -59,9 +59,8 @@ document.addEventListener('click', (event) => {
         let clickedArtist = JSON.parse(clickedArtistJSON);
         if (clickedArtist == null) {
             clickedArtist = []
-        } {
-            clickedArtist.splice(0,1,event.target.dataset.name)
         }
+        clickedArtist.splice(0, 1, event.target.dataset.name)
         clickedArtistJSON = JSON.stringify(clickedArtist)
         localStorage.setItem('clickedArtist', clickedArtistJSON)
     }
