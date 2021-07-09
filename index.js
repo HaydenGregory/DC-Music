@@ -31,7 +31,6 @@ fetch("https://shazam-core.p.rapidapi.com/v1/charts/world?limit=10", {
         let carouselInner = document.getElementById('carousel-inner')
         let active = "active"
         let index = 1
-        console.log(data)
         const HTMLInsert = data.map(info => {
             const HTMLReturn = (`<div class="carousel-item ${active}">
                 <img src="${info.images.coverart}"
@@ -53,10 +52,9 @@ fetch("https://shazam-core.p.rapidapi.com/v1/charts/world?limit=10", {
 
 
 //! Bands In Town API 
-const submitButton = document.getElementById('main-search')
-document.getElementById('search-form').addEventListener('submit', (event) => {
-    event.preventDefault()
-    const HTMLSearch = encodeURIComponent(document.getElementById('input-search').value)
+
+document.addEventListener('DOMContentLoaded', event => {
+    const HTMLSearch = encodeURIComponent(document.getElementById('artist-name'))
     fetch(`https://rest.bandsintown.com/artists/${HTMLSearch}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
         return res.json()
     }).then(data => {
@@ -65,3 +63,17 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
         console.error(err);
     })
 })
+
+
+// let watchlistJSON = localStorage.getItem('watchlist');
+//                 let watchlist = JSON.parse(watchlistJSON);
+//                 if (watchlist == null) {
+//                     watchlist = []
+//                 }
+//                 if (!watchlist.find((eachMovie) => {
+//                     return eachMovie.Title == movie.Title
+//                 })) {
+//                     watchlist.push(movie)
+//                 }
+//                 watchlistJSON = JSON.stringify(watchlist)
+//                 localStorage.setItem('watchlist', watchlistJSON)
