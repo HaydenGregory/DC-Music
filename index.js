@@ -66,3 +66,4 @@ document.addEventListener('click', (event) => {
         localStorage.setItem('clickedArtist', clickedArtistJSON)
     }
 })
+
