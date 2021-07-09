@@ -11,11 +11,6 @@ h1 {
     animation: glow 1s ease-in-out infinite alternate;
 }
 
-h4 {
-    font-size: 60px !important;
-    color: white;
-}
-
 p {
     color: gainsboro;
 }
@@ -31,11 +26,7 @@ p {
 
 /* 0 0 20px #fff, 0 0 30px #3e51fd, 0 0 40px #3e51fd, 0 0 50px #3e51fd, 0 0 60px #3e51fd, 0 0 70px #3e51fd, 0 0 80px #3e51fd; */
 
-div .artist-card {
-    display: flex;
-    padding: 30px;
-    justify-content: space-between;
-}
+
 
 .carousel-item {
     height: 100%;
@@ -49,8 +40,7 @@ div .artist-card {
 
 .navbar-brand {
     font-family: fantasy;
-    display:flex;
-    align-self: center;
+    
     
 }
 
@@ -60,4 +50,14 @@ div .artist-card {
 
 .dropdown-item {
     background-color: cadetblue;
+}
+
+.dc-logo {
+    height: 40px;
+    width: 50px;    
+    
+}
+
+#main-search {
+    color:lavender;
 }
