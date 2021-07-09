@@ -36,3 +36,23 @@ div .artist-card {
     height: 100%;
     width: 100%;
 }
+
+.navbar-custom {
+    background-color:#001d53 ;
+    
+}
+
+.navbar-brand {
+    font-family: fantasy;
+    display:flex;
+    align-self: center;
+    
+}
+
+.nav-item {
+    color: aliceblue;
+}
+
+.dropdown-item {
+    background-color: cadetblue;
+}
