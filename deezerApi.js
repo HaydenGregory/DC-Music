@@ -30,10 +30,12 @@
                     <div class="card-body">
                         <h5 id="artist-name"class="card-title">${result.artist.name}</h5>
                         <p id="artist-bio" class="card-text">${result.title}</p>
-                        <a id="eventButton" data-name="${result.artist.name}" href="./results.html" class="btn btn-primary">Events</a>
+                        <a data-name="${result.artist.name}" id="eventButton" href="./results.html" class="btn btn-primary">Events</a>
                     </div>
                 </div>`
                 })
+
+                console.log(songsHtmlArray.join(''))
                 return songsHtmlArray.join('')
             }
             const cards = document.getElementById('artist-container')
