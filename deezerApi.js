@@ -4,7 +4,7 @@
     searchForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const searchInputHTML = encodeURIComponent(searchBar.value)
-        fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=love" + searchInputHTML, {
+        fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + searchInputHTML, {
             "method": "GET",
             "headers": {
                 "x-rapidapi-key": "30caeee35amsh028fb26bb6a6d1fp10bee7jsne480b16660b8",
@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <h5 id="artist-name"class="card-title">${result.artist.name}</h5>
                         <p id="artist-bio" class="card-text">${result.title}</p>
-                        <a id="eventButton" href="./results.html" class="btn btn-primary">Events</a>
+                        <a id="eventButton" data-name="${result.artist.name}" href="./results.html" class="btn btn-primary">Events</a>
                     </div>
                 </div>`
                 })

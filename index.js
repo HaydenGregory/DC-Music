@@ -53,27 +53,27 @@ fetch("https://shazam-core.p.rapidapi.com/v1/charts/world?limit=10", {
 
 //! Bands In Town API 
 
-document.addEventListener('DOMContentLoaded', event => {
-    const HTMLSearch = encodeURIComponent(document.getElementById('artist-name'))
-    fetch(`https://rest.bandsintown.com/artists/${HTMLSearch}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
-        return res.json()
-    }).then(data => {
-        console.log(data)
-    }).catch(err => {
-        console.error(err);
-    })
+document.addEventListener('click', (event) => {
+    if (event.target.id == 'eventButton') {
+        let clickedArtistJSON = localStorage.getItem('clickedArtist');
+        let clickedArtist = JSON.parse(clickedArtistJSON);
+        if (clickedArtist == null) {
+            clickedArtist = []
+        } {
+            clickedArtist.splice(0,1,event.target.dataset.name)
+        }
+        clickedArtistJSON = JSON.stringify(clickedArtist)
+        localStorage.setItem('clickedArtist', clickedArtistJSON)
+    }
 })
 
-
-// let watchlistJSON = localStorage.getItem('watchlist');
-//                 let watchlist = JSON.parse(watchlistJSON);
-//                 if (watchlist == null) {
-//                     watchlist = []
-//                 }
-//                 if (!watchlist.find((eachMovie) => {
-//                     return eachMovie.Title == movie.Title
-//                 })) {
-//                     watchlist.push(movie)
-//                 }
-//                 watchlistJSON = JSON.stringify(watchlist)
-//                 localStorage.setItem('watchlist', watchlistJSON)
+// document.addEventListener('DOMContentLoaded', event => {
+//     const HTMLSearch = encodeURIComponent(document.getElementById('artist-name'))
+//     fetch(`https://rest.bandsintown.com/artists/${HTMLSearch}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
+//         return res.json()
+//     }).then(data => {
+//         console.log(data)
+//     }).catch(err => {
+//         console.error(err);
+//     })
+// })
