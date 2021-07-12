@@ -12,18 +12,18 @@
 </head>
 
 <body>
-    <!-- ------INTERACTIVE LOGOS------ -->            
+    <!-- ------INTERACTIVE LOGOS------ -->
     <div class="logos">
-        <img src="https://img.icons8.com/color/144/000000/youtube-music.png"/>
-        <img src="https://img.icons8.com/fluent/96/000000/musical.png"/>
-        <img src="https://img.icons8.com/color/48/000000/spotify--v1.png"/>
-        <img src="https://img.icons8.com/nolan/96/musical-notes.png"/>
-        <img src="https://img.icons8.com/color/96/000000/itunes.png"/>
-        <img src="https://img.icons8.com/color/96/000000/amazon-music.png"/>
-        <img src="https://img.icons8.com/color/48/000000/soundcloud.png"/>
-    </div>  
-    
-    
+        <img src="https://img.icons8.com/color/144/000000/youtube-music.png" />
+        <img src="https://img.icons8.com/fluent/96/000000/musical.png" />
+        <img src="https://img.icons8.com/color/48/000000/spotify--v1.png" />
+        <img src="https://img.icons8.com/nolan/96/musical-notes.png" />
+        <img src="https://img.icons8.com/color/96/000000/itunes.png" />
+        <img src="https://img.icons8.com/color/96/000000/amazon-music.png" />
+        <img src="https://img.icons8.com/color/48/000000/soundcloud.png" />
+    </div>
+
+
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
             <a href="https://www.pngrepo.com/png/43051/512/music.png">
@@ -60,46 +60,46 @@
     <br>
 
     
-    <!-- --------Carousel-------- -->
-    <div class="container col-4">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                    aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                    aria-label="Slide 5"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
-                    aria-label="Slide 6"></button>
-            </div>
-            <!-- Carousel Images and slides -->
-            <div id="carousel-inner" class="carousel-inner">
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-    <!-- ---------Carousel End--------- -->
     <div class="container">
         <div class="row">
             <div class="col-12 header text-center">
                 <h1 class="display-1">DC Music</h1>
-                <p>Search artists to find where their next show is</p>
+                <p>Search for your favorite artists</p>
             </div>
         </div>
+        <!-- --------Carousel-------- -->
+        <div class="container col-4 mb-4">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
+                </div>
+                <!-- Carousel Images and slides -->
+                <div id="carousel-inner" class="carousel-inner">
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- ---------Carousel End--------- -->
         <div class="row">
             <div class="col-12 search">
                 <form class="d-flex" method="post" id="search-form" action="results.html">
@@ -107,27 +107,19 @@
                         <input id="input-search" class="form-control search-bar" placeholder="Search artist/song..." />
 
                         <a href="results.html">
-                        <button id="main-search" class="btn btn-primary input-group-btn" type="submit">Search 
-                        </button>
+                            <button id="main-search" class="btn btn-primary input-group-btn" type="submit">Search
+                            </button>
                         </a>
                     </div>
                 </form>
             </div>
 
 
-        <div class="row">
-            <div class="col-12 results">
-                <!-- Artists show up here -->
-                <br>
-                <div id="artist-container" class="row justify-content-center">
-                    <div class="card-img-top" style="width: 18rem;">
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.music-bazaar.com%2Falbum-images%2Fvol32%2F1955%2F1955875%2F3834618-big%2FCCR-cover.jpg&f=1&nofb=1"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Artist</h5>
-                            <p id="artist-bio" class="card-text">The artists info lalalalalalalalala</p>
-                            <a href="#" class="btn btn-primary">Click</a>
-                        </div>
+            <div class="row">
+                <div class="col-12 results">
+                    <!-- Artists show up here -->
+                    <br>
+                    <div id="artist-container" class="row justify-content-center">
                     </div>
                 </div>
             </div>
@@ -137,11 +129,11 @@
 
 
 
-        <script src="./index.js"></script>
-        <script src="./deezerApi.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+            <script src="./index.js"></script>
+            <script src="./deezerApi.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
 </body>
 
 </html>

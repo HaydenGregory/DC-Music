@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <h5 id="artist-name"class="card-title">${result.name}</h5>
                         <p id="artist-bio" class="card-text">${result.type}</p>
-                        <a id="eventButton" data-name="${result.name}" href="./results.html" class="btn btn-primary">Events</a>
+                        <a id="eventButton" data-name="${result.name}" href="./results.html" class="btn btn-primary">Artist Page</a>
                     </div>
                 </div>`
                 })
