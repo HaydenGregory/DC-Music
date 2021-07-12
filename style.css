@@ -1,5 +1,74 @@
 body {
-    background-color:#6E7E85 !important;
+    background: linear-gradient(-45deg, #4cd1e9, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
+}
+
+.logos img {
+    width: 60px;
+    animation: logos 25s linear infinite;
+    
+}
+
+.logos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    position: absolute;
+    bottom: -300px;
+    z-index: -1;
+}
+
+@keyframes logos {
+    0%{
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    70%{
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(-110vh);
+        opacity: 0;
+}
+}
+
+.logos img:nth-child(1){
+    animation-delay: 2s;
+}
+.logos img:nth-child(2){
+    animation-delay: 5s;
+}
+.logos img:nth-child(3){
+    animation-delay: 1s;
+}
+.logos img:nth-child(4){
+    animation-delay: 4s;
+}
+.logos img:nth-child(5){
+    animation-delay: 7s;
+}
+.logos img:nth-child(6){
+    animation-delay: 1s;
+}
+.logos img:nth-child(7){
+    animation-delay: 3s;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 h1 {
