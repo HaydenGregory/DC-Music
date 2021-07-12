@@ -38,9 +38,9 @@
 
 
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search For an Artist..."
+                    <input class="form-control me-0" type="search" placeholder="Search For an Artist..."
                         aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search Website</button>
+                    <button id="navbar-search-btn" class="btn btn-outline-light" type="submit">Search Website</button>
                 </form>
             </div>
         </div>
@@ -62,14 +62,6 @@
                     aria-label="Slide 5"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
                     aria-label="Slide 6"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"
-                    aria-label="Slide 7"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7"
-                    aria-label="Slide 8"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8"
-                    aria-label="Slide 9"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="9"
-                    aria-label="Slide 0"></button>
             </div>
             <!-- Carousel Images and slides -->
             <div id="carousel-inner" class="carousel-inner">
@@ -86,7 +78,7 @@
             </button>
         </div>
     </div>
-    <!-- ---------Carousel End -->
+    <!-- ---------Carousel End--------- -->
     <div class="container">
         <div class="row">
             <div class="col-12 header text-center">
@@ -96,12 +88,14 @@
         </div>
         <div class="row">
             <div class="col-12 search">
-                <form id="search-form" action="results.html">
+                <form class="d-flex" method="post" id="search-form" action="results.html">
                     <div class="input-group input-group-lg">
                         <input id="input-search" class="form-control search-bar" placeholder="Search artist/song..." />
-                        <button id="main-search" class="btn btn-light input-group-btn" type="submit">
-                            Search
+
+                        <a href="results.html">
+                        <button id="main-search" class="btn btn-primary input-group-btn" type="submit">Search 
                         </button>
+                        </a>
                     </div>
                 </form>
             </div>
