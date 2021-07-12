@@ -71,3 +71,9 @@ p {
     background-color:lightblue;
 }
 
+
+.shows-results{
+    margin-top: 60px;
+    justify-content: space-between;
+    height: 500px;
+}
