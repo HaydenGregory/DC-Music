@@ -59,21 +59,10 @@ document.addEventListener('click', (event) => {
         let clickedArtist = JSON.parse(clickedArtistJSON);
         if (clickedArtist == null) {
             clickedArtist = []
-        } {
-            clickedArtist.splice(0,1,event.target.dataset.name)
         }
+        clickedArtist.splice(0, 1, event.target.dataset.name)
         clickedArtistJSON = JSON.stringify(clickedArtist)
         localStorage.setItem('clickedArtist', clickedArtistJSON)
     }
 })
 
-// document.addEventListener('DOMContentLoaded', event => {
-//     const HTMLSearch = encodeURIComponent(document.getElementById('artist-name'))
-//     fetch(`https://rest.bandsintown.com/artists/${HTMLSearch}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
-//         return res.json()
-//     }).then(data => {
-//         console.log(data)
-//     }).catch(err => {
-//         console.error(err);
-//     })
-// })

@@ -39,6 +39,8 @@
                     </div>
                 </div>`
                 })
+
+                console.log(songsHtmlArray.join(''))
                 return songsHtmlArray.join('')
             }
             const cards = document.getElementById('artist-container')
