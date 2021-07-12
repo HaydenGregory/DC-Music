@@ -15,29 +15,27 @@
 //             console.error(err);
 //         });
 
-
-//! Shazam Charts Api (functional)
-
-fetch("https://shazam-core.p.rapidapi.com/v1/charts/world?limit=10", {
+//! The Audio DB API 
+fetch("https://theaudiodb.p.rapidapi.com/trending.php?country=us&type=itunes&format=singles", {
     "method": "GET",
     "headers": {
-        "x-rapidapi-key": "768ec53e87msh5c7325f02e043cbp19ea52jsnba76d5ab383a",
-        "x-rapidapi-host": "shazam-core.p.rapidapi.com"
+		"x-rapidapi-key": "768ec53e87msh5c7325f02e043cbp19ea52jsnba76d5ab383a",
+		"x-rapidapi-host": "theaudiodb.p.rapidapi.com"
     }
 })
-    .then(res => {
-        return res.json();
+    .then(response => {
+        return response.json();
     }).then(data => {
         let carouselInner = document.getElementById('carousel-inner')
         let active = "active"
         let index = 1
-        const HTMLInsert = data.map(info => {
+        const HTMLInsert = data.trending.map(info => {
             const HTMLReturn = (`<div class="carousel-item ${active}">
-                <img src="${info.images.coverart}"
+                <img src="${info.strTrackThumb}"
                 class="d-block w-100 h-50" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                <h5>#${index}: ${info.title}</h5>
-                <p>${info.subtitle}</p>
+                <h5>#${info.intChartPlace}: ${info.strTrack}</h5>
+                <p>${info.strArtist}</p>
                 </div>
                 </div>`)
             active = ""
@@ -48,7 +46,8 @@ fetch("https://shazam-core.p.rapidapi.com/v1/charts/world?limit=10", {
     })
     .catch(err => {
         console.error(err);
-    })
+    });
+
 
 
 //! Bands In Town API 
