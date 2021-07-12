@@ -32,7 +32,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
             document.getElementById('img-insert').innerHTML = `<p>No artist information available</p>`
         }
         if (data.artists[0].strArtistThumb) {
-            document.getElementById('img-insert').innerHTML = `<img src=${data.artists[0].strArtistThumb} width='300px'>`
+            document.getElementById('img-insert').innerHTML = `<img src=${data.artists[0].strArtistThumb} width='100%' class='img-responsive'>`
         }})
     .catch(err => {
         console.error(err);
