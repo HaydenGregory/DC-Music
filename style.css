@@ -171,3 +171,13 @@ h4 {
 #artist-info{
     background-color: rgba(255, 249, 249, 0.137);
 }
+
+.upcoming-shows-list{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+}
+
+.upcoming-show-item{
+    width: 75%;
+}
