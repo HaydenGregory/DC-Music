@@ -48,6 +48,11 @@ p {
     color: aliceblue;
 }
 
+#navbar-search-btn {
+    background-color: whitesmoke;
+    color: #000;
+}
+
 .dropdown-item {
     background-color: cadetblue;
 }
@@ -59,5 +64,10 @@ p {
 }
 
 #main-search {
-    color:lavender;
+    height: 65px;
 }
+
+#input-search {
+    background-color:lightblue;
+}
+
