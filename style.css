@@ -1,3 +1,4 @@
+
 body {
     background: linear-gradient(-45deg, #4cd1e9, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
@@ -71,6 +72,7 @@ body {
 	}
 }
 
+
 h1 {
     font-size: 120px;
     color: white;
@@ -140,3 +142,12 @@ p {
     background-color:lightblue;
 }
 
+.shows-results{
+    margin-top: 60px;
+    justify-content: space-between;
+    height: 500px;
+}
+
+h4 {
+    font-size: 60px !important;
+}
