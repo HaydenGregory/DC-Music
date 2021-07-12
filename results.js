@@ -26,6 +26,8 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
     .then(response => {
         return response.json();
     }).then(data => {
+        console.log(data)
+        document.getElementById('artist-info').innerHTML = `<p>${data.artists[0].strBiographyEN} </p>`
         if (data) {
             document.getElementById('img-insert').innerHTML = `<p>No artist information available</p>`
         }
