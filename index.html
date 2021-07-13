@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+    </head>
 
 <body>
     <!-- ------INTERACTIVE LOGOS------ -->
@@ -48,8 +48,22 @@
 
 
 <!--* Add profile dropdown -->
-                
+                <div class="action">
+                    <div class="profile">
+                        <img id="profile-pic" src="https://img.icons8.com/nolan/64/user-male-circle.png"/>
+                    </div>
+                    <div class="menu" style="visibility: hidden">
+                        <h3 id="profile-name">Your Name<br><span>Music Connoisseur</span></h3>
+                        <ul>
+                            <li><img src="https://img.icons8.com/ios/50/000000/user--v2.png"/><a href="#">Profile</a></li>
+                            <li><img src="https://img.icons8.com/ios/50/000000/settings--v2.png"/><a href="#">Settings</a></li>
+                            <li><img src="https://img.icons8.com/ios/50/000000/logout-rounded--v2.png"/><a id="logout" href="#">Logout</a></li>
+                        </ul>
+                    </div>
 
+                    </div>
+                </div>
+<!--* Add profile dropdown END -->
             </div>
         </div>
     </nav>
@@ -123,7 +137,13 @@
 
 
 
-
+            <!-- <script>
+                function menutoggle(){
+                    const toggleMenu = document.querySelector('.menu');
+                    toggleMenu.classList.toggle('active')
+                    toggleMenu.preventDefault();
+                }
+            </script> -->
 
             <script src="./index.js"></script>
             <script src="./deezerApi.js"></script>

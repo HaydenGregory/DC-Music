@@ -65,3 +65,7 @@ document.addEventListener('click', (event) => {
     }
 })
 
+document.getElementById('profile-pic').addEventListener('click', () => {
+    document.querySelector('.menu').setAttribute('style', 'visibility: visible')
+    
+})
