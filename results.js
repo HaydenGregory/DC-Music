@@ -1,8 +1,12 @@
+//! Creating Local Storage 
+
 let clickedArtistJSON = localStorage.getItem('clickedArtist');
 let clickedArtist = JSON.parse(clickedArtistJSON);
 
+let clickedSongJSON = localStorage.getItem('clickedSong');
+let clickedSong = JSON.parse(clickedSongJSON);
 
-//! Script for Upcoming Shows
+//! Script for Upcoming Shows To Display on Results HTML
 
 fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
     return res.json()
@@ -20,7 +24,7 @@ fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7
 })
 
 
-//! Script For Artist Photo and Bio
+//! Script For Artist Photo and Bio To Display on Results HTML
 
 fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
     "method": "GET",
@@ -45,7 +49,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
     });
 
 
-//! Script For Top Songs and Albums by Artist
+//! Script For Top Songs and Albums by Artist To Display on Results HTML
 
 fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     "method": "GET",
@@ -65,12 +69,26 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
             <div class="fw-bold song-title-top">${item.strTrack}</div>
             ${item.strAlbum}
             </div>
-            <span class="badge bg-primary rounded-pill">PLAY</span>
+            <button data-name="${item.strMusicVid}" type="submit" class="play-button badge bg-primary rounded-pill">PLAY</button>
             </li>`
         })
         document.getElementById('top-songs').innerHTML = topSongsHTML.join('')
-        console.log(topSongsHTML)
     })
     .catch(err => {
         console.error(err);
     });
+
+
+
+//! Storing Clicked Song YouTube Link In Local Storage To Use For IFrame
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('play-button')) {
+        if (clickedSong == null) {
+            clickedSong = []
+        }
+        clickedSong.splice(0, 1, event.target.dataset.name)
+        clickedSongJSON = JSON.stringify(clickedSong)
+        localStorage.setItem('clickedSong', clickedSongJSON)
+    }
+})
