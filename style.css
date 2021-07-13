@@ -74,6 +74,7 @@ body {
 
 
 h1 {
+    font-family: "barcade";
     font-size: 120px;
     color: white;
     text-align: center;
@@ -105,14 +106,11 @@ p {
 }
 
 .navbar-custom {
-    background-color:#001d53 ;
-    
+    background-color:#ffffff49;
 }
 
 .navbar-brand {
-    font-family: fantasy;
-    
-    
+    font-family: "barcade";
 }
 
 .nav-item {
@@ -131,7 +129,6 @@ p {
 .dc-logo {
     height: 40px;
     width: 50px;    
-    
 }
 
 #main-search {
@@ -166,4 +163,23 @@ h4 {
 
 ::placeholder {
     color: whitesmoke !important;
+}
+
+#artist-info{
+    background-color: rgba(255, 249, 249, 0.137);
+}
+
+.upcoming-shows-list{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+}
+
+.upcoming-show-item{
+    width: 75%;
+}
+
+@font-face {
+	font-family: "barcade";
+	src: url(./barcade.ttf);
 }

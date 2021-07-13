@@ -17,9 +17,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-secondary bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">DC Music</a>
+            <a href="#">
+                <a class="navbar-brand ms-3" href="/index.html">[DC Music] </a>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -28,28 +30,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="login.html">Login/Sign-up</a>
                     </li>
-
                 </ul>
+
+
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search For an Artist..."
+                    <input class="form-control me-0" type="search" placeholder="Search For an Artist..."
                         aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search Website</button>
+                    <button id="navbar-search-btn" class="btn btn-outline-light" type="submit">Search Website</button>
                 </form>
             </div>
         </div>
@@ -58,7 +50,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 header">
-                <h1 class="display-1">DC Music</h1>
+                <h1 class="display-1 mb-5">[DC Music]</h1>
             </div>
         </div>
         <div id="row1" class="row shows-results">
@@ -70,14 +62,24 @@
                 <div id="artist-info" class="overflow-auto p-2">
                 </div>
             </div>
-            <div class="col-lg-5 card shows-results">
-                <div id='event-header' class="card-header">
+            <div class="col-lg-5 card card-result shows-results">
+                <div id='event-header' class="card-header m-2">
                     No upcoming shows
                 </div>
                 <div class="col overflow-auto">
                     <ul id="event-list" class="list-group list-group-flush">
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div class="row top-lists mt-5 mb-4">
+            <div class="col-6">
+                <h2 class="mb-3">Top Songs</h2>
+                <ol id="top-songs" class="list-group list-group-numbered">
+                </ol>
+            </div>
+            <div class="col-6">
+
             </div>
         </div>
     </div>
