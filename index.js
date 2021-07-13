@@ -65,6 +65,12 @@ document.addEventListener('click', (event) => {
     }
 })
 
+
+document.getElementById('profile-pic').addEventListener('click', () => {
+    document.querySelector('.menu').setAttribute('style', 'visibility: visible')
+    
+})
+
 document.addEventListener('click', (event) => {
     if (event.target.id == 'eventButton') {
         let artistIdJSON = localStorage.getItem('artistId');
@@ -77,3 +83,4 @@ document.addEventListener('click', (event) => {
         localStorage.setItem('artistId', artistIdJSON)
     }
 })
+
