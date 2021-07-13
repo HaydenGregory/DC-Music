@@ -320,7 +320,7 @@ input {
 	src: url(./barcade.ttf);
 }
 
-#img-insert #srcimg #artimage{
+#img-insert #artimage{
     border-radius: 25px;
     box-shadow: 8px 8px rgba(0, 0, 0, 0.11);
 }
