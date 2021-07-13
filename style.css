@@ -38,6 +38,14 @@ body {
 }
 }
 
+a {
+    color:whitesmoke !important;
+}
+
+a:hover {
+    color:#0017e6 !important;
+}
+
 .logos img:nth-child(1){
     animation-delay: 2s;
 }

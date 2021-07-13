@@ -65,3 +65,15 @@ document.addEventListener('click', (event) => {
     }
 })
 
+document.addEventListener('click', (event) => {
+    if (event.target.id == 'eventButton') {
+        let artistIdJSON = localStorage.getItem('artistId');
+        let artistId = JSON.parse(artistIdJSON);
+        if (artistId == null) {
+            artistId = []
+        }
+        artistId.splice(0, 1, event.target.dataset.id)
+        artistIdJSON = JSON.stringify(artistId)
+        localStorage.setItem('artistId', artistIdJSON)
+    }
+})
