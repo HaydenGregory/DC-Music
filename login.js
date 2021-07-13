@@ -1,17 +1,30 @@
 // Log in info
 var username = document.getElementById("username")
-localStorage.setItem("email", username.value)
 var password = document.getElementById("password")
-localStorage.setItem("password", password.value)
+
 
 // sign up info
-var inputEmail = document.getElementById("email")
-localStorage.setItem("email", inputEmail.value)
-var inputPassword = document.getElementById("password")
-localStorage.setItem("password", password.value)
-var confirmPass = document.getElementById("confirm-password")
-localStorage.setItem("password", password.value)
-var inputName = document.getElementById("email")
-localStorage.setItem("email", inputEmail.value)
 var inputUsername = document.getElementById("password")
-localStorage.setItem("password", password.value)
+const inputEmail = document.getElementById("email")
+var inputPassword = document.getElementById("password")
+var confirmPass = document.getElementById("confirm-password")
+
+document.addEventListener('click', (event) => {
+    if (event.target.id == 'signup') {
+        localStorage.setItem("email", inputEmail.value)
+        localStorage.setItem("password",inputPassword.value)
+        localStorage.setItem("username", inputUsername.value)
+    }
+})
+
+document.addEventListener('click', (event) => {
+    if (event.target.id == 'login') {
+        if ( username == username.value || username == email.value) {
+            if (password == password.value) {
+                //log in functionality here
+            }
+        }
+    }
+})
+
+
