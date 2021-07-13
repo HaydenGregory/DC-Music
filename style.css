@@ -38,6 +38,10 @@ body {
 }
 }
 
+a {
+    color:whitesmoke !important;
+}
+
 .logos img:nth-child(1){
     animation-delay: 2s;
 }
