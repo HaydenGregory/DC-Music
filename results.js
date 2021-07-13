@@ -3,10 +3,16 @@
 let clickedArtistJSON = localStorage.getItem('clickedArtist');
 let clickedArtist = JSON.parse(clickedArtistJSON);
 
+
+let artistIdJSON = localStorage.getItem('artistId');
+let artistId = JSON.parse(artistIdJSON);
+//! Script for Upcoming Shows
+
 let clickedSongJSON = localStorage.getItem('clickedSong');
 let clickedSong = JSON.parse(clickedSongJSON);
 
 //! Script for Upcoming Shows To Display on Results HTML
+
 
 fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
     return res.json()
@@ -41,7 +47,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
             document.getElementById('img-insert').innerHTML = `<p>No artist information available</p>`
         }
         if (data.artists[0].strArtistThumb) {
-            document.getElementById('img-insert').innerHTML = `<img src=${data.artists[0].strArtistThumb} width='100%' class='img-responsive'>`
+            document.getElementById('img-insert').innerHTML = `<img id="artimage" src=${data.artists[0].strArtistThumb} width='100%' class='img-responsive border border-2 border-success'>`
         }
     })
     .catch(err => {
@@ -62,15 +68,28 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
         return res.json();
     }).then(data => {
         console.log(data)
-        const noSongInfo = '<h4>Sorry, no song information</h4>'
         let topSongsHTML = data.track.map(item => {
-            return `<li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto album-title-sub">
-            <div class="fw-bold song-title-top">${item.strTrack}</div>
-            ${item.strAlbum}
-            </div>
-            <button data-name="${item.strMusicVid}" type="submit" class="play-button badge bg-primary rounded-pill">PLAY</button>
-            </li>`
+            if (item.strMusicVid) {
+                const youtubeREGEX = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+                const youtubeId = item.strMusicVid.match(youtubeREGEX)
+                const embedUrl = 'https://www.youtube.com/embed/' + youtubeId[1]
+                return `<li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto album-title-sub">
+                <div class="fw-bold song-title-top">${item.strTrack}</div>
+                ${item.strAlbum}
+                </div>
+                <button data-name="${embedUrl}" type="submit" class="play-button btn btn-outline-success rounded-pill">PLAY</button>
+                </li>`
+            }
+            else {
+                return `<li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto album-title-sub">
+                <div class="fw-bold song-title-top">${item.strTrack}</div>
+                ${item.strAlbum}
+                </div>
+                <button type="submit" class="play-button btn btn-danger rounded-pill disabled">Unavailable</button>
+                </li>`
+            }
         })
         document.getElementById('top-songs').innerHTML = topSongsHTML.join('')
     })
@@ -78,6 +97,74 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
         console.error(err);
     });
 
+
+
+// render albums
+
+
+fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`, {
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-key": "30caeee35amsh028fb26bb6a6d1fp10bee7jsne480b16660b8",
+        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+    }
+})
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        return Promise.all(data.data.map((album) => {
+            return fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${album.id}/tracks`, {
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-key": "30caeee35amsh028fb26bb6a6d1fp10bee7jsne480b16660b8",
+                    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+                }
+            })
+                .then(res => res.json())
+                .then(trackData => {
+                    return {
+                        ...album,
+                        tracks: trackData.data
+                    }
+                })
+        }))
+    })
+    .then(data => {
+        console.log(data)
+        cordion.innerHTML = renderAlbums(data)
+    })
+    .catch(err => {
+        console.error(err);
+    })
+function renderSongs(songsArray) {
+    let songsHtmlArray = songsArray.map((song) => {
+        return `<li class="list-group-item"><div class="d-inline-flex w-100 justify-content-between text-left">${song.title}<audio src="${song.preview}" controls ></audio></div></li>`
+    })
+    return songsHtmlArray.join('')
+}
+function renderAlbums(albumArray) {
+    let albumsHtmlArray = albumArray.map((album) => {
+        return `<div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#accordion-${album.id}" aria-expanded="false" aria-controls="accordion-${album.id}">
+                ${album.title}
+            </button>
+        </h2>
+        <div id="accordion-${album.id}" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <ol class="list-group list-group-numbered">
+                ${renderSongs(album.tracks)}
+                </ol>
+            </div>
+        </div>
+    </div>`
+    })
+    return albumsHtmlArray.join('')
+}
+const cordion = document.getElementById('accordionExample')
 
 
 //! Storing Clicked Song YouTube Link In Local Storage To Use For IFrame
@@ -88,7 +175,9 @@ document.addEventListener('click', (event) => {
             clickedSong = []
         }
         clickedSong.splice(0, 1, event.target.dataset.name)
+        document.getElementById('youtube-vid').setAttribute('src', clickedSong)
         clickedSongJSON = JSON.stringify(clickedSong)
         localStorage.setItem('clickedSong', clickedSongJSON)
     }
 })
+

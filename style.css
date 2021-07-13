@@ -157,6 +157,14 @@ line-height: 1.2em;
 }
 }
 
+a {
+    color:whitesmoke !important;
+}
+
+a:hover {
+    color:#0017e6 !important;
+}
+
 .logos img:nth-child(1){
     animation-delay: 2s;
 }
@@ -305,4 +313,13 @@ input {
 @font-face {
 	font-family: "barcade";
 	src: url(./barcade.ttf);
+}
+
+#img-insert #srcimg #artimage{
+    border-radius: 25px;
+    box-shadow: 8px 8px rgba(0, 0, 0, 0.11);
+}
+
+.card-body{
+    background-color: #ffffff3f;
 }
