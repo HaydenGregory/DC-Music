@@ -1,9 +1,18 @@
+//! Creating Local Storage 
+
 let clickedArtistJSON = localStorage.getItem('clickedArtist');
 let clickedArtist = JSON.parse(clickedArtistJSON);
+
 
 let artistIdJSON = localStorage.getItem('artistId');
 let artistId = JSON.parse(artistIdJSON);
 //! Script for Upcoming Shows
+
+let clickedSongJSON = localStorage.getItem('clickedSong');
+let clickedSong = JSON.parse(clickedSongJSON);
+
+//! Script for Upcoming Shows To Display on Results HTML
+
 
 fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
     return res.json()
@@ -21,7 +30,7 @@ fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7
 })
 
 
-//! Script For Artist Photo and Bio
+//! Script For Artist Photo and Bio To Display on Results HTML
 
 fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
     "method": "GET",
@@ -46,7 +55,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
     });
 
 
-//! Script For Top Songs and Albums by Artist
+//! Script For Top Songs and Albums by Artist To Display on Results HTML
 
 fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     "method": "GET",
@@ -61,20 +70,34 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
         console.log(data)
         const noSongInfo = '<h4>Sorry, no song information</h4>'
         let topSongsHTML = data.track.map(item => {
-            return `<li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto album-title-sub">
-            <div class="fw-bold song-title-top">${item.strTrack}</div>
-            ${item.strAlbum}
-            </div>
-            <span class="badge bg-primary rounded-pill">PLAY</span>
-            </li>`
+            if (item.strMusicVid) {
+                const youtubeREGEX = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+                const youtubeId = item.strMusicVid.match(youtubeREGEX)
+                const embedUrl = 'https://www.youtube.com/embed/' + youtubeId[1]
+                return `<li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto album-title-sub">
+                <div class="fw-bold song-title-top">${item.strTrack}</div>
+                ${item.strAlbum}
+                </div>
+                <button data-name="${embedUrl}" type="submit" class="play-button btn btn-outline-success rounded-pill">PLAY</button>
+                </li>`
+            }
+            else {
+                return `<li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto album-title-sub">
+                <div class="fw-bold song-title-top">${item.strTrack}</div>
+                ${item.strAlbum}
+                </div>
+                <button type="submit" class="play-button btn btn-danger rounded-pill disabled">Unavailable</button>
+                </li>`
+            }
         })
         document.getElementById('top-songs').innerHTML = topSongsHTML.join('')
-        console.log(topSongsHTML)
     })
     .catch(err => {
         console.error(err);
     });
+
 
 
 // render albums
@@ -143,4 +166,19 @@ function renderAlbums(albumArray) {
     return albumsHtmlArray.join('')
 }
 const cordion = document.getElementById('accordionExample')
+
+
+//! Storing Clicked Song YouTube Link In Local Storage To Use For IFrame
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('play-button')) {
+        if (clickedSong == null) {
+            clickedSong = []
+        }
+        clickedSong.splice(0, 1, event.target.dataset.name)
+        document.getElementById('youtube-vid').setAttribute('src', clickedSong)
+        clickedSongJSON = JSON.stringify(clickedSong)
+        localStorage.setItem('clickedSong', clickedSongJSON)
+    }
+})
 
