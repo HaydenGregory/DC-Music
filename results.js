@@ -41,7 +41,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
             document.getElementById('img-insert').innerHTML = `<p>No artist information available</p>`
         }
         if (data.artists[0].strArtistThumb) {
-            document.getElementById('img-insert').innerHTML = `<img src=${data.artists[0].strArtistThumb} width='100%' class='img-responsive'>`
+            document.getElementById('img-insert').innerHTML = `<img id="artimage" src=${data.artists[0].strArtistThumb} width='100%' class='img-responsive border border-2 border-success'>`
         }
     })
     .catch(err => {
@@ -62,7 +62,6 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
         return res.json();
     }).then(data => {
         console.log(data)
-        const noSongInfo = '<h4>Sorry, no song information</h4>'
         let topSongsHTML = data.track.map(item => {
             if (item.strMusicVid) {
                 const youtubeREGEX = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
