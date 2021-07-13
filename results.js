@@ -65,15 +65,9 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
         const noSongInfo = '<h4>Sorry, no song information</h4>'
         let topSongsHTML = data.track.map(item => {
             if (item.strMusicVid) {
-                if (item.strMusicVid.slice(4, 5) == "s") {
-                    embedUrl = "https://www.youtube.com/embed/" + item.strMusicVid.slice(32)
-                }
-                else if (item.strMusicVid.slice(0, 1) == "w") {
-                    embedUrl = "https://www.youtube.com/embed/" + item.strMusicVid.slice(24)
-                }
-                else {
-                    embedUrl = "https://www.youtube.com/embed/" + item.strMusicVid.slice(31)
-                }
+                const youtubeREGEX = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+                const youtubeId = item.strMusicVid.match(youtubeREGEX)
+                const embedUrl = 'https://www.youtube.com/embed/' + youtubeId[1]
                 return `<li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto album-title-sub">
                 <div class="fw-bold song-title-top">${item.strTrack}</div>
