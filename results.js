@@ -3,10 +3,8 @@
 let clickedArtistJSON = localStorage.getItem('clickedArtist');
 let clickedArtist = JSON.parse(clickedArtistJSON);
 
-
 let artistIdJSON = localStorage.getItem('artistId');
 let artistId = JSON.parse(artistIdJSON);
-//! Script for Upcoming Shows
 
 let clickedSongJSON = localStorage.getItem('clickedSong');
 let clickedSong = JSON.parse(clickedSongJSON);
@@ -47,7 +45,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
             document.getElementById('img-insert').innerHTML = `<p>No artist information available</p>`
         }
         if (data.artists[0].strArtistThumb) {
-            document.getElementById('img-insert').innerHTML = `<img id="artimage" src=${data.artists[0].strArtistThumb} width='100%' class='img-responsive border border-2 border-success'>`
+            document.getElementById('img-insert').innerHTML = `<img id="artimage" src=${data.artists[0].strArtistThumb} width='100%' class='img-responsive border border-3 border-success'>`
         }
     })
     .catch(err => {
@@ -55,7 +53,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
     });
 
 
-//! Script For Top Songs and Albums by Artist To Display on Results HTML
+//! Script For Top Songs and YouTube Videos by Artist To Display on Results HTML
 
 fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     "method": "GET",
@@ -99,7 +97,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
 
 
 
-// render albums
+//! Render Albums
 
 
 fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`, {
@@ -148,8 +146,8 @@ function renderAlbums(albumArray) {
         return `<div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#accordion-${album.id}" aria-expanded="false" aria-controls="accordion-${album.id}">
-                ${album.title}
+                data-bs-target="#accordion-${album.id}" aria-expanded="false" aria-controls="accordion-${album.id}"><b>
+                ${album.title}</b>
             </button>
         </h2>
         <div id="accordion-${album.id}" class="accordion-collapse collapse" aria-labelledby="headingOne"
