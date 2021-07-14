@@ -75,7 +75,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
                 <div class="fw-bold song-title-top">${item.strTrack}</div>
                 ${item.strAlbum}
                 </div>
-                <button data-name="${embedUrl}" type="submit" class="play-button btn btn-outline-success rounded-pill">PLAY</button>
+                <button data-name="${embedUrl}" type="submit" class="play-button btn btn-outline-success rounded-pill">WATCH</button>
                 </li>`
             }
             else {
