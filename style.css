@@ -1,7 +1,7 @@
 
 body {
     background: linear-gradient(-45deg, #43cce4, #da244b, #03749c, #23d549);
-	background-size: 400% 400%;
+	background-size: 400% 1500%;
 	animation: gradient 10s ease infinite;
 }
 
@@ -326,4 +326,9 @@ input {
 
 .card-body{
     background-color: #ffffff3f;
+}
+
+#grayColor {
+    color: rgb(128,128,128,0.3);
+    font-size: 14px;
 }

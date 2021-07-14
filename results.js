@@ -16,7 +16,6 @@ let clickedSong = JSON.parse(clickedSongJSON);
 fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
     return res.json()
 }).then(data => {
-    console.log(data)
     const featuredArtist = `${data[0].lineup[0]} upcoming shows`
     insertHTML = data.map(currentEvent => {
         return `<div class="upcoming-shows-list"><li class="list-group-item upcoming-show-item"><b>Artist:</b> ${currentEvent.lineup.join(', ')} <br><b>Date:</b> ${currentEvent.datetime}<br><b>Venue:</b> ${currentEvent.venue.name}, ${currentEvent.venue.location}</li><a href="${currentEvent.offers[0].url}"><button type="button" class="btn btn-outline-primary">Tickets ${currentEvent.offers[0].status}</button></a></div>`
@@ -128,7 +127,6 @@ fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`, {
         }))
     })
     .then(data => {
-        console.log(data)
         cordion.innerHTML = renderAlbums(data)
     })
     .catch(err => {
@@ -142,7 +140,7 @@ function renderSongs(songsArray) {
         if (remainder < 10) {
             remainder = ('0' + remainder)
         }
-        return `<li class="list-group-item d-flex align-items-start">&nbsp${song.title}&nbsp<p>${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio src="${song.preview}" controls ></audio></div></li>`
+        return `<li class="list-group-item d-flex align-items-start">&nbsp${song.title}&nbsp<p id="grayColor">${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio src="${song.preview}" controls ></audio></div></li>`
     })
     return songsHtmlArray.join('')
 }
@@ -153,7 +151,7 @@ function renderAlbums(albumArray) {
             <button class="accordion-button collapsed fw-bold song-title-top" type="button" data-bs-toggle="collapse"
                 data-bs-target="#accordion-${album.id}" aria-expanded="false" aria-controls="accordion-${album.id}">
                 <img src="${album.cover_small}">&nbsp
-                ${album.title}<p class="mt-auto mb-auto">&nbsp${album.record_type}&nbsp${album.release_date.substring(0,4)}</p>
+                ${album.title}<p class="mt-auto mb-auto" id="grayColor">&nbsp&nbsp${album.record_type}&nbsp${album.release_date.substring(0,4)}</p>
             </button>
         </h2>
         <div id="accordion-${album.id}" class="accordion-collapse collapse" aria-labelledby="headingOne"
