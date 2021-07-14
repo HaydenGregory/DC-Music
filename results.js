@@ -141,7 +141,7 @@ function renderSongs(songsArray) {
         if (remainder < 10) {
             remainder = ('0' + remainder)
         }
-        return `<li class="list-group-item d-flex align-items-start">&nbsp${song.title}&nbsp<p id="grayColor">${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio src="${song.preview}" controls preload="none"></audio></div></li>`
+        return `<li class="list-group-item d-flex flex-wrap align-items-start">&nbsp${song.title}&nbsp<p id="grayColor">${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio style="max-width: 100%" src="${song.preview}" controls preload="none"></audio></div></li>`
     })
     return songsHtmlArray.join('')
 }
@@ -158,7 +158,7 @@ function renderAlbums(albumArray) {
         <div id="accordion-${album.id}" class="accordion-collapse collapse" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <ol class="list-group list-group-numbered">
+                <ol class="list-group list-group-numbered ">
                 ${renderSongs(album.tracks)}
                 </ol>
             </div>
