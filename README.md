@@ -23,11 +23,12 @@ Working for the first three months after launch. The student API key for Bandsin
 
 ## Project Screen Shot(s)
 
-#### Example:   
+#### Home Page:   
 
-[ PRETEND SCREEN SHOT IS HERE ]
+![image](https://user-images.githubusercontent.com/84730187/125695272-b5cfa579-c581-4a0e-a377-fc86c2a1e3a1.png)
+#### Results Page:
 
-[ PRETEND OTHER SCREEN SHOT IS HERE ]
+![image](https://user-images.githubusercontent.com/84730187/125696593-9a87a804-b7ed-478a-ac35-5906514094bd.png)
 
 ## Reflection
 
