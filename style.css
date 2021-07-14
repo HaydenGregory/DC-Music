@@ -1,7 +1,7 @@
 
 body {
     background: linear-gradient(-45deg, #4cd1e9, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
+	background-size: 400% 1300%;
 	animation: gradient 10s ease infinite;
 }
 /* #profileimg {
