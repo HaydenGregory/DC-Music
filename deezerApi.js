@@ -42,8 +42,5 @@ searchForm.addEventListener('submit', (event) => {
     const cards = document.getElementById('artist-container')
 });
 
-// render albums
-
-// deezer api
 
 // can't get play buttons to play individual song. only plays first song that pops up on every button.
