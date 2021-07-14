@@ -27,11 +27,11 @@ searchForm.addEventListener('submit', (event) => {
         let songsHtmlArray = musicArray.map((result) => {
             return `
                     <div class="card-img-top" style="width: 18rem;">
-                    <img src="${result.picture_medium}" class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <img src="${result.picture_medium}" class=" card-img-top border border-2 border-light shadow p-3  bg-body rounded" alt="...">
+                    <div class="card-body mb-3">
                         <h5 id="artist-name"class="card-title">${result.name}</h5>
                         <p id="artist-bio" class="card-text">${result.type}</p>
-                        <a id="eventButton" data-id="${result.id}" data-name="${result.name}" href="./results.html" class="btn btn-primary eventButton">Artist Page</a>
+                        <a id="eventButton" data-id="${result.id}" data-name="${result.name}" href="./results.html" class="btn btn-outline-light eventButton">Artist Page</a>
                     </div>
                 </div>`
         })

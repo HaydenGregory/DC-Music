@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DC Music</title>
+    <link rel="icon" href="./favicon.png">
     <link rel="stylesheet" href="./style.css">
     <script src="./results.js" async defer></script>
     <script src="./deezerApi.js" async defer></script>
@@ -19,7 +20,6 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-            <a href="#">
                 <a class="navbar-brand ms-3" href="/index.html">[DC Music] </a>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -39,8 +39,22 @@
 
 
 <!--* Add profile dropdown -->
-                
+                <div class="action">
+                    <div class="profile">
+                        <img id="profile-pic" src="https://img.icons8.com/nolan/64/user-male-circle.png"/>
+                    </div>
+                    <div class="menu" style="visibility: hidden">
+                        <h3 id="profile-name">Your Name<br><span>Music Connoisseur</span></h3>
+                        <ul>
+                            <li><img src="https://img.icons8.com/ios/50/000000/user--v2.png"/><a href="#">Profile</a></li>
+                            <li><img src="https://img.icons8.com/ios/50/000000/settings--v2.png"/><a href="#">Settings</a></li>
+                            <li><img src="https://img.icons8.com/ios/50/000000/logout-rounded--v2.png"/><a id="logout" href="#">Logout</a></li>
+                        </ul>
+                    </div>
 
+                    </div>
+                </div>
+<!--* Add profile dropdown END -->
             </div>
         </div>
     </nav>
@@ -60,8 +74,8 @@
                 <div id="artist-info" class="overflow-auto p-2">
                 </div>
             </div>
-            <div class="col-lg-5 card card-result shows-results">
-                <div id='event-header' class="card-header m-2">
+            <div class="col-lg-5 card card-result shows-results border border-3 border-success rounded-3">
+                <div id='event-header' class="card-header m-2 border border-2 border-success rounded-pill text-center">
                     No upcoming shows
                 </div>
                 <div class="col overflow-auto">
@@ -72,8 +86,8 @@
         </div>
         <div class="row top-lists mt-5 mb-4">
             <div class="col-lg-6">
-                <h2 class="mb-3">Top Songs</h2>
-                <ol id="top-songs" class="list-group list-group-numbered">
+                <h2 class="mb-3">Popular Songs</h2>
+                <ol id="top-songs" class="list-group list-group-numbered border rounded-3 border-3 border-success">
                 </ol>
             </div>
             <div class="col-lg-6">
@@ -83,8 +97,10 @@
                 </div>
             </div>
         </div>
-        <div class="accordion" id="accordionExample">
-
+        <div class="albums mb-4">
+            <h2 class="mb-3">Discography</h2>
+            <div class="accordion border border-3 border-success rounded-3 shadow-lg" id="accordionExample">
+            </div>
         </div>
     </div>
 
