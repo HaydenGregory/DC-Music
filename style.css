@@ -327,3 +327,8 @@ input {
 .card-body{
     background-color: #ffffff3f;
 }
+
+#grayColor {
+    color: rgb(128,128,128,0.3);
+    font-size: 14px;
+}
