@@ -64,7 +64,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     .then(res => {
         return res.json();
     }).then(data => {
-        document.getElementById('top-songs').innerHTML = '<p style="text-align: center; padding-top: 12px"><b>No Top Tracks Data</b></p>'
+        document.getElementById('top-songs').innerHTML = '<p style="text-align: center; padding-top: 12px"><b>No Popular Song Data</b></p>'
         let topSongsHTML = data.track.map(item => {
             if (item.strMusicVid) {
                 const youtubeREGEX = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i; // Regular expression to grab the ID at the end of YouTube links
