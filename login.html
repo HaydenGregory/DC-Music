@@ -19,12 +19,6 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-<<<<<<< HEAD
-            <a href="https://www.pngrepo.com/png/43051/512/music.png">
-                <img class="dc-logo" src="https://www.pngrepo.com/png/43051/512/music.png">
-
-=======
->>>>>>> 31908aaf1f6fd9cfcf877dd3437f5d61647bdcfe
                 <a class="navbar-brand ms-3" href="/index.html">[DC Music] </a>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -71,7 +65,7 @@
                     <form>
                         <div class="mb-3">
                             <br>
-                            <input type="text" class="form-control" id="username" placeholder="Username">
+                            <input type="text" class="form-control" id="login-username" placeholder="Username">
                         </div>
                         <div class="mb-3">
                             <input type="password" class="form-control" id="login-password" placeholder="Password">
@@ -106,6 +100,20 @@
             </div>
         </div>
     </div>
+
+<?php
+if(isset($_POST['submit'])){
+$firstName = "First Name:".$_POST['username']."
+";
+$lastName = "Last Name:".$_POST['email']."
+";
+$file=fopen("users.txt", "a");
+fwrite($file, $firstName);
+fwrite($file, $lastName);
+fclose($file);
+}
+?>
+
 
     <script type="text/javascript" src="users.json"></script>
     <script src="./index.js"></script>
