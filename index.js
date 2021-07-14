@@ -10,7 +10,7 @@ fetch("https://theaudiodb.p.rapidapi.com/trending.php?country=us&type=itunes&for
         return response.json();
     }).then(data => {
         let top5 = data.trending.splice(1,5)
-        console.log(top5)
+        
         let carouselInner = document.getElementById('carousel-inner')
         let active = "active"
         const HTMLInsert = top5.map(info => {
@@ -63,6 +63,15 @@ document.addEventListener('click', (event) => {
 //! Profile pic drop down on click
 document.getElementById('profile-pic').addEventListener('click', () => {
     document.querySelector('.menu').setAttribute('style', 'visibility: visible')
+    
+    
+    if (document.querySelector('.menu').classList.contains('visible')) {
+        document.querySelector('.menu').setAttribute('style', 'visibility: hidden')
+        
+    }
+    document.querySelector('.menu').classList.toggle('visible')
 })
+
+
 
 
