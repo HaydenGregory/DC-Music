@@ -140,7 +140,7 @@ function renderSongs(songsArray) {
         if (remainder < 10) {
             remainder = ('0' + remainder)
         }
-        return `<li class="list-group-item d-flex align-items-start">&nbsp${song.title}&nbsp<p id="grayColor">${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio src="${song.preview}" controls ></audio></div></li>`
+        return `<li class="list-group-item d-flex align-items-start">&nbsp${song.title}&nbsp<p id="grayColor">${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio src="${song.preview}" controls preload="none"></audio></div></li>`
     })
     return songsHtmlArray.join('')
 }
@@ -148,9 +148,9 @@ function renderAlbums(albumArray) {
     let albumsHtmlArray = albumArray.map((album) => {
         return `<div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button collapsed fw-bold song-title-top" type="button" data-bs-toggle="collapse"
+            <button style="height: 110px;" class="accordion-button collapsed fw-bold song-title-top" type="button" data-bs-toggle="collapse"
                 data-bs-target="#accordion-${album.id}" aria-expanded="false" aria-controls="accordion-${album.id}">
-                <img src="${album.cover_small}">&nbsp
+                <img class="h-100"src="${album.cover_medium}">&nbsp
                 ${album.title}<p class="mt-auto mb-auto" id="grayColor">&nbsp&nbsp${album.record_type}&nbsp${album.release_date.substring(0,4)}</p>
             </button>
         </h2>
