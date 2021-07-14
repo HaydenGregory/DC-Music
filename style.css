@@ -1,12 +1,10 @@
 
 body {
-    background: linear-gradient(-45deg, #4cd1e9, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
+    background: linear-gradient(-45deg, #43cce4, #da244b, #03749c, #23d549);
+	background-size: 400% 1500%;
 	animation: gradient 10s ease infinite;
 }
-/* #profileimg {
-    top:10px;
-} */
+
 /* profile dropdown start */
 .action {
     position:absolute;
@@ -37,7 +35,7 @@ body {
     top: 80px;
     right: -10px;
     padding: 5px 15px;
-    background: lightskyblue;
+    background: rgba(135, 206, 250, 0.226);
     width: 200px;
     box-sizing: 0 5px 25px rgba(0,0,0,0.1);
     border-radius: 15px;
@@ -45,7 +43,7 @@ body {
 }
 
 .action .menu.active {
-    visibility:hidden;
+    visibility: hidden;
     opacity: 1;
     top: 80px;
 }
@@ -59,7 +57,7 @@ body {
     right: 28px;
     width: 20px;
     height: 20px;
-    background: rgb(27, 168, 199);
+    background: rgba(27, 167, 199, 0.637);
     transform: rotate(45deg);
 }
 
@@ -78,7 +76,7 @@ line-height: 1.2em;
 
 .action .menu h3 span {
     font-size: 14px;
-    color: #0a566d;
+    color: #234a4e;
     font-weight: 400;
 }
 
@@ -113,17 +111,22 @@ line-height: 1.2em;
     transition: 0.5s;
 }
 
-.action .menu ul li:hover a {
-    color:rgb(15, 29, 193);
+.logout:hover  { 
+    color: red !important;
 }
-
-.action .menu ul li:hover #logout {
-    color: rgb(182, 8, 34);
-}
-
 
 /* profile dropdown end */
 
+    a {
+    color:whitesmoke !important;
+}
+
+a:hover {
+    color:#0017e6 !important;
+}
+
+
+/* Logos Start */
 .logos img {
     width: 60px;
     animation: logos 25s linear infinite;
@@ -157,13 +160,7 @@ line-height: 1.2em;
 }
 }
 
-a {
-    color:whitesmoke !important;
-}
 
-a:hover {
-    color:#0017e6 !important;
-}
 
 .logos img:nth-child(1){
     animation-delay: 2s;
@@ -186,6 +183,8 @@ a:hover {
 .logos img:nth-child(7){
     animation-delay: 3s;
 }
+
+/* Logos End */
 
 @keyframes gradient {
 	0% {
@@ -327,4 +326,9 @@ input {
 
 .card-body{
     background-color: #ffffff3f;
+}
+
+#grayColor {
+    color: rgb(128,128,128,0.3);
+    font-size: 14px;
 }

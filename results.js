@@ -16,10 +16,10 @@ let clickedSong = JSON.parse(clickedSongJSON);
 fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
     return res.json()
 }).then(data => {
-    console.log(data)
     const featuredArtist = `${data[0].lineup[0]} upcoming shows`
     insertHTML = data.map(currentEvent => {
-        return `<div class="upcoming-shows-list"><li class="list-group-item upcoming-show-item"><b>Artist:</b> ${currentEvent.lineup.join(', ')} <br><b>Date:</b> ${currentEvent.datetime}<br><b>Venue:</b> ${currentEvent.venue.name}, ${currentEvent.venue.location}</li><a href="${currentEvent.offers[0].url}"><button type="button" class="btn btn-outline-primary">Tickets ${currentEvent.offers[0].status}</button></a></div>`
+        let date = currentEvent.datetime.slice(0,10)
+        return `<div class="upcoming-shows-list"><li class="list-group-item upcoming-show-item"><b>Artist:</b> ${currentEvent.lineup.join(', ')} <br><b>Date:</b> ${date}<br><b>Venue:</b> ${currentEvent.venue.name}, ${currentEvent.venue.location}</li><a href="${currentEvent.offers[0].url}"><button type="button" class="btn btn-outline-primary">Tickets ${currentEvent.offers[0].status}</button></a></div>`
     })
     let eventList = document.getElementById('event-list')
     eventList.innerHTML = insertHTML.join('')
@@ -64,7 +64,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     .then(res => {
         return res.json();
     }).then(data => {
-        document.getElementById('top-songs').innerHTML = '<p style="text-align: center; padding-top: 12px"><b>No Top Tracks Data</b></p>'
+        document.getElementById('top-songs').innerHTML = '<p style="text-align: center; padding-top: 12px"><b>No Popular Song Data</b></p>'
         let topSongsHTML = data.track.map(item => {
             if (item.strMusicVid) {
                 const youtubeREGEX = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i; // Regular expression to grab the ID at the end of YouTube links
@@ -75,7 +75,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
                 <div class="fw-bold song-title-top">${item.strTrack}</div>
                 ${item.strAlbum}
                 </div>
-                <button data-name="${embedUrl}" type="submit" class="play-button btn btn-outline-success rounded-pill">PLAY</button>
+                <button data-name="${embedUrl}" type="submit" class="play-button btn btn-outline-success rounded-pill">WATCH</button>
                 </li>`
             }
             else {
@@ -128,7 +128,6 @@ fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`, {
         }))
     })
     .then(data => {
-        console.log(data)
         cordion.innerHTML = renderAlbums(data)
     })
     .catch(err => {
@@ -136,7 +135,13 @@ fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`, {
     })
 function renderSongs(songsArray) {
     let songsHtmlArray = songsArray.map((song) => {
-        return `<li class="list-group-item"><div class="d-inline-flex w-100 justify-content-between text-left">${song.title}<audio src="${song.preview}" controls ></audio></div></li>`
+        // let minutes = song.duration / 60
+        let minutes = Math.floor(song.duration / 60)
+        let remainder = song.duration % 60
+        if (remainder < 10) {
+            remainder = ('0' + remainder)
+        }
+        return `<li class="list-group-item d-flex flex-wrap align-items-start">&nbsp${song.title}&nbsp<p id="grayColor">${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio style="max-width: 100%" src="${song.preview}" controls preload="none"></audio></div></li>`
     })
     return songsHtmlArray.join('')
 }
@@ -144,15 +149,16 @@ function renderAlbums(albumArray) {
     let albumsHtmlArray = albumArray.map((album) => {
         return `<div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#accordion-${album.id}" aria-expanded="false" aria-controls="accordion-${album.id}"><b>
-                ${album.title}</b>
+            <button style="height: 110px;" class="accordion-button collapsed fw-bold song-title-top" type="button" data-bs-toggle="collapse"
+                data-bs-target="#accordion-${album.id}" aria-expanded="false" aria-controls="accordion-${album.id}">
+                <img class="h-100"src="${album.cover_medium}">&nbsp
+                ${album.title}<p class="mt-auto mb-auto" id="grayColor">&nbsp&nbsp${album.record_type}&nbsp${album.release_date.substring(0,4)}</p>
             </button>
         </h2>
         <div id="accordion-${album.id}" class="accordion-collapse collapse" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <ol class="list-group list-group-numbered">
+                <ol class="list-group list-group-numbered ">
                 ${renderSongs(album.tracks)}
                 </ol>
             </div>
