@@ -1,17 +1,18 @@
 //! Creating Local Storage 
-
+// Storing the artist name after click
 let clickedArtistJSON = localStorage.getItem('clickedArtist');
 let clickedArtist = JSON.parse(clickedArtistJSON);
 
+// Storing the artist ID after click 
 let artistIdJSON = localStorage.getItem('artistId');
 let artistId = JSON.parse(artistIdJSON);
 
+// Storing the clicked song YouTube url
 let clickedSongJSON = localStorage.getItem('clickedSong');
 let clickedSong = JSON.parse(clickedSongJSON);
 
+
 //! Script for Upcoming Shows To Display on Results HTML
-
-
 fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7989425512a2b6dea2004f6cdd51&date=upcoming`).then(res => {
     return res.json()
 }).then(data => {
@@ -40,10 +41,9 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
     .then(response => {
         return response.json();
     }).then(data => {
+        document.getElementById('artist-info').innerHTML = "<p style='text-align: center'><b>No artist information available.</b></p>"
+        document.getElementById('img-insert').innerHTML = `<img id="artimage" src="./noimage.png" width='300px' height="300px" class='img-responsive border border-3 border-success'>`
         document.getElementById('artist-info').innerHTML = `<p>${data.artists[0].strBiographyEN} </p>`
-        if (data) {
-            document.getElementById('img-insert').innerHTML = `<p>No artist information available</p>`
-        }
         if (data.artists[0].strArtistThumb) {
             document.getElementById('img-insert').innerHTML = `<img id="artimage" src=${data.artists[0].strArtistThumb} width='100%' class='img-responsive border border-3 border-success'>`
         }
@@ -54,7 +54,6 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
 
 
 //! Script For Top Songs and YouTube Videos by Artist To Display on Results HTML
-
 fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     "method": "GET",
     "headers": {
@@ -65,12 +64,12 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     .then(res => {
         return res.json();
     }).then(data => {
-        console.log(data)
+        document.getElementById('top-songs').innerHTML = '<p style="text-align: center; padding-top: 12px"><b>No Top Tracks Data</b></p>'
         let topSongsHTML = data.track.map(item => {
             if (item.strMusicVid) {
-                const youtubeREGEX = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+                const youtubeREGEX = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i; // Regular expression to grab the ID at the end of YouTube links
                 const youtubeId = item.strMusicVid.match(youtubeREGEX)
-                const embedUrl = 'https://www.youtube.com/embed/' + youtubeId[1]
+                const embedUrl = 'https://www.youtube.com/embed/' + youtubeId[1] // Creating the correct youtube embed url for the page and then returning the html for top songs below
                 return `<li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto album-title-sub">
                 <div class="fw-bold song-title-top">${item.strTrack}</div>

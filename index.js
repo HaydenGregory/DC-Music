@@ -1,20 +1,3 @@
-//! Apple Api (not functional yet)
-
-// fetch("https://api.music.apple.com/v1/catalog/us/charts?types=songs,albums,playlists&genre=20&limit=1", {
-//     headers: {
-
-//         'Content-Type': 'application/json'
-//     }
-// })
-//         .then(response => {
-//             return response.json();
-//         }).then(data => {
-//             console.log(data)
-//         })
-//         .catch(err => {
-//             console.error(err);
-//         });
-
 //! The Audio DB API 
 fetch("https://theaudiodb.p.rapidapi.com/trending.php?country=us&type=itunes&format=singles", {
     "method": "GET",
@@ -26,10 +9,11 @@ fetch("https://theaudiodb.p.rapidapi.com/trending.php?country=us&type=itunes&for
     .then(response => {
         return response.json();
     }).then(data => {
+        let top5 = data.trending.splice(1,5)
+        console.log(top5)
         let carouselInner = document.getElementById('carousel-inner')
         let active = "active"
-        let index = 1
-        const HTMLInsert = data.trending.map(info => {
+        const HTMLInsert = top5.map(info => {
             const HTMLReturn = (`<div class="carousel-item ${active}">
                 <img src="${info.strTrackThumb}"
                 class="d-block w-100 h-50" alt="...">
@@ -39,7 +23,6 @@ fetch("https://theaudiodb.p.rapidapi.com/trending.php?country=us&type=itunes&for
                 </div>
                 </div>`)
             active = ""
-            index += 1
             return HTMLReturn
         })
         carouselInner.innerHTML = HTMLInsert.join('')
@@ -49,9 +32,7 @@ fetch("https://theaudiodb.p.rapidapi.com/trending.php?country=us&type=itunes&for
     });
 
 
-
-//! Bands In Town API 
-
+//! Event listener to store clicked artist into local storage
 document.addEventListener('click', (event) => {
     if (event.target.id == 'eventButton') {
         let clickedArtistJSON = localStorage.getItem('clickedArtist');
@@ -65,12 +46,7 @@ document.addEventListener('click', (event) => {
     }
 })
 
-
-document.getElementById('profile-pic').addEventListener('click', () => {
-    document.querySelector('.menu').setAttribute('style', 'visibility: visible')
-    
-})
-
+//! Event listener to store artist ID in local storage
 document.addEventListener('click', (event) => {
     if (event.target.id == 'eventButton') {
         let artistIdJSON = localStorage.getItem('artistId');
@@ -83,4 +59,10 @@ document.addEventListener('click', (event) => {
         localStorage.setItem('artistId', artistIdJSON)
     }
 })
+
+//! Profile pic drop down on click
+document.getElementById('profile-pic').addEventListener('click', () => {
+    document.querySelector('.menu').setAttribute('style', 'visibility: visible')
+})
+
 
