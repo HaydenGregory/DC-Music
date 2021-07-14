@@ -31,7 +31,7 @@ searchForm.addEventListener('submit', (event) => {
                     <div class="card-body mb-3">
                         <h5 id="artist-name"class="card-title">${result.name}</h5>
                         <p id="artist-bio" class="card-text">${result.type}</p>
-                        <a id="eventButton" data-id="${result.id}" data-name="${result.name}" href="./results.html" class="btn btn-primary eventButton">Artist Page</a>
+                        <a id="eventButton" data-id="${result.id}" data-name="${result.name}" href="./results.html" class="btn btn-outline-light eventButton">Artist Page</a>
                     </div>
                 </div>`
         })
