@@ -140,7 +140,13 @@ fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`, {
     })
 function renderSongs(songsArray) {
     let songsHtmlArray = songsArray.map((song) => {
-        return `<li class="list-group-item"><div class="d-inline-flex w-100 justify-content-between text-left">${song.title}<audio src="${song.preview}" controls ></audio></div></li>`
+        // let minutes = song.duration / 60
+        let minutes = Math.floor(song.duration / 60)
+        let remainder = song.duration % 60
+        if (remainder < 10) {
+            remainder = ('0' + remainder)
+        }
+        return `<li class="list-group-item d-flex align-items-start">&nbsp${song.title}&nbsp<p>${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio src="${song.preview}" controls ></audio></div></li>`
     })
     return songsHtmlArray.join('')
 }
@@ -148,9 +154,10 @@ function renderAlbums(albumArray) {
     let albumsHtmlArray = albumArray.map((album) => {
         return `<div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button collapsed fw-bold song-title-top" type="button" data-bs-toggle="collapse"
                 data-bs-target="#accordion-${album.id}" aria-expanded="false" aria-controls="accordion-${album.id}">
-                ${album.title}
+                <img src="${album.cover_small}">&nbsp
+                ${album.title}<p class="mt-auto mb-auto">&nbsp${album.record_type}&nbsp${album.release_date.substring(0,4)}</p>
             </button>
         </h2>
         <div id="accordion-${album.id}" class="accordion-collapse collapse" aria-labelledby="headingOne"
