@@ -18,7 +18,8 @@ fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7
 }).then(data => {
     const featuredArtist = `${data[0].lineup[0]} upcoming shows`
     insertHTML = data.map(currentEvent => {
-        return `<div class="upcoming-shows-list"><li class="list-group-item upcoming-show-item"><b>Artist:</b> ${currentEvent.lineup.join(', ')} <br><b>Date:</b> ${currentEvent.datetime}<br><b>Venue:</b> ${currentEvent.venue.name}, ${currentEvent.venue.location}</li><a href="${currentEvent.offers[0].url}"><button type="button" class="btn btn-outline-primary">Tickets ${currentEvent.offers[0].status}</button></a></div>`
+        let date = currentEvent.datetime.slice(0,10)
+        return `<div class="upcoming-shows-list"><li class="list-group-item upcoming-show-item"><b>Artist:</b> ${currentEvent.lineup.join(', ')} <br><b>Date:</b> ${date}<br><b>Venue:</b> ${currentEvent.venue.name}, ${currentEvent.venue.location}</li><a href="${currentEvent.offers[0].url}"><button type="button" class="btn btn-outline-primary">Tickets ${currentEvent.offers[0].status}</button></a></div>`
     })
     let eventList = document.getElementById('event-list')
     eventList.innerHTML = insertHTML.join('')
