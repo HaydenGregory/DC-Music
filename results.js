@@ -18,7 +18,8 @@ fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7
 }).then(data => {
     const featuredArtist = `${data[0].lineup[0]} upcoming shows`
     insertHTML = data.map(currentEvent => {
-        return `<div class="upcoming-shows-list"><li class="list-group-item upcoming-show-item"><b>Artist:</b> ${currentEvent.lineup.join(', ')} <br><b>Date:</b> ${currentEvent.datetime}<br><b>Venue:</b> ${currentEvent.venue.name}, ${currentEvent.venue.location}</li><a href="${currentEvent.offers[0].url}"><button type="button" class="btn btn-outline-primary">Tickets ${currentEvent.offers[0].status}</button></a></div>`
+        let date = currentEvent.datetime.slice(0,10)
+        return `<div class="upcoming-shows-list"><li class="list-group-item upcoming-show-item"><b>Artist:</b> ${currentEvent.lineup.join(', ')} <br><b>Date:</b> ${date}<br><b>Venue:</b> ${currentEvent.venue.name}, ${currentEvent.venue.location}</li><a href="${currentEvent.offers[0].url}"><button type="button" class="btn btn-outline-primary">Tickets ${currentEvent.offers[0].status}</button></a></div>`
     })
     let eventList = document.getElementById('event-list')
     eventList.innerHTML = insertHTML.join('')
@@ -140,7 +141,7 @@ function renderSongs(songsArray) {
         if (remainder < 10) {
             remainder = ('0' + remainder)
         }
-        return `<li class="list-group-item d-flex align-items-start">&nbsp${song.title}&nbsp<p id="grayColor">${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio src="${song.preview}" controls preload="none"></audio></div></li>`
+        return `<li class="list-group-item d-flex flex-wrap align-items-start">&nbsp${song.title}&nbsp<p id="grayColor">${minutes}:${remainder}</p><div class="d-flex flex-row-reverse ms-auto"><audio style="max-width: 100%" src="${song.preview}" controls preload="none"></audio></div></li>`
     })
     return songsHtmlArray.join('')
 }
@@ -157,7 +158,7 @@ function renderAlbums(albumArray) {
         <div id="accordion-${album.id}" class="accordion-collapse collapse" aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <ol class="list-group list-group-numbered">
+                <ol class="list-group list-group-numbered ">
                 ${renderSongs(album.tracks)}
                 </ol>
             </div>
