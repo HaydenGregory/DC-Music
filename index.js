@@ -64,10 +64,8 @@ document.addEventListener('click', (event) => {
 document.getElementById('profile-pic').addEventListener('click', () => {
     document.querySelector('.menu').setAttribute('style', 'visibility: visible')
     
-    
     if (document.querySelector('.menu').classList.contains('visible')) {
         document.querySelector('.menu').setAttribute('style', 'visibility: hidden')
-        
     }
     document.querySelector('.menu').classList.toggle('visible')
 })
@@ -85,16 +83,16 @@ if (loggedin === "true") {
     profileLinks.style.display = "block"
     loggin.style.display = "none"
 
-    document.addEventListener('click', (event) => {
-        if (event.target.id == 'logout') {
-            localStorage.setItem("loggedin", "false")
-            profile.style.display = "none"
-            profileLinks.style.display = "none"
-            loggin.style.display = "block"
-        }
-        console.log(localStorage.getItem("username"))
-    })
-}
+document.addEventListener('click', (event) => {
+    if (event.target.id == 'logout') {
+        localStorage.setItem("loggedin", "false")
+        profile.style.display = "none"
+        profileLinks.style.display = "none"
+        loggin.style.display = "block"
+    }
+    console.log(localStorage.getItem("username"))
+    }
+)}
 
 
 
