@@ -37,16 +37,18 @@ Working for the first three months after launch. The student API key for Bandsin
   - This project was a learning experience for storage things in local storage to use on other pages, pulling large payloads from APIs, and large user interactivity.
   - Unexpected obstacles:
     - YouTube URLs delivered from the Audio DB API had a lot of variation and needed to be edited to embed on the the page. Used regular expression to grab the ID's at the end of all the varying links then created new links with the ID's.
-    - 
+    - Login functionality is easier to do in the back-end, and with this being a front-end project, it took some javascript ingenuity to create a similar functionality within local storage. 
   - What tools did you use to implement this project?
-      - This might seem obvious because you are IN this codebase, but to all other humans now is the time to talk about why you chose webpack instead of create react app, or D3, or vanilla JS instead of a framework etc. Brag about your choices and justify them here.  
+      - HTML and CSS were built using Bootstrap. This allowed for an easy to implement, clean look. Modifications to the elements were made to achieve a clear user-interface design. Javascript was used to get and present informatyion from various APIs, aklong with adding extra functionality to oother user-experience elements such as buttons.    
 
-#### Example:  
+#### Background:  
 
-This was a 3 week long project built during my third module at Turing School of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
+This was a ~one week long porject built to cap off the front-end portion of DigitalCrafts' full-time Web Development course. Project goals included incorporating the use of two different APIs, saving user data, and creasting a functional and visually coherent site using the languages and skills we've learned up to this point.
 
-Originally I wanted to build an application that allowed users to pull data from the Twitter API based on what they were interested in, such as 'most tagged users'. I started this process by using the `create-react-app` boilerplate, then adding `react-router-4.0` and `redux`.  
+Originally we wanted to build a site that pulled up information and concert dates of a music artist using the Spotify and BandsinTown APIs. When the use of those became increasingly complicated, we pivoted to different APIs that provided simialr data in a more managable manner, such as Deezer's. We started by building a simple HTML skeleton to provide the space for Javascript to display the musicians' information.
+
+The main challenges were due to APIs either being difficult to work with / retrieve information from and being use-limited, which meant it would break before the project was completed. The solution to these issues, using similar but different APIS, was found realityvley quickly. Another issue was the login functionality. Though this is usually done in the back-end, with this being a front-end project, a faux-verification process was implemented using Javascript and locally storing files.  
 
 One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
 
-At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a `webpack.config.js` file to more fully understand the build process.
+In the end, the website was buitl using VanillaJS, Bootstrap, HTML, and CSS. The objective was clear from the beginning, build a site that you can seearch an artist on iand it will presnet relevant information on them such as songs and tour dates. And as more ideas sprung up throughout the time-window, they were implemented. 
