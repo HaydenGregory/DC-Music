@@ -28,7 +28,6 @@ fetch(`https://rest.bandsintown.com/artists/${clickedArtist}/events?app_id=0c3d7
     console.error(err);
 })
 
-
 //! Script For Artist Photo and Bio To Display on Results HTML
 
 fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
@@ -52,8 +51,8 @@ fetch(`https://theaudiodb.p.rapidapi.com/search.php?s=${clickedArtist}`, {
         console.error(err);
     });
 
-
 //! Script For Top Songs and YouTube Videos by Artist To Display on Results HTML
+
 fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     "method": "GET",
     "headers": {
@@ -95,9 +94,7 @@ fetch(`https://theaudiodb.p.rapidapi.com/track-top10.php?s=${clickedArtist}`, {
     });
 
 
-
 //! Render Albums
-
 
 fetch(`https://deezerdevs-deezer.p.rapidapi.com/artist/${artistId}/albums`, {
     "method": "GET",
@@ -145,6 +142,7 @@ function renderSongs(songsArray) {
     })
     return songsHtmlArray.join('')
 }
+
 function renderAlbums(albumArray) {
     let albumsHtmlArray = albumArray.map((album) => {
         return `<div class="accordion-item">
@@ -169,7 +167,6 @@ function renderAlbums(albumArray) {
 }
 const cordion = document.getElementById('accordionExample')
 
-
 //! Storing Clicked Song YouTube Link In Local Storage To Use For IFrame
 
 document.addEventListener('click', (event) => {
@@ -184,3 +181,35 @@ document.addEventListener('click', (event) => {
     }
 })
 
+//! Profile pic drop down on click
+document.getElementById('profile-pic').addEventListener('click', () => {
+    document.querySelector('.menu').setAttribute('style', 'visibility: visible')
+    
+    if (document.querySelector('.menu').classList.contains('visible')) {
+        document.querySelector('.menu').setAttribute('style', 'visibility: hidden')    
+    }
+    document.querySelector('.menu').classList.toggle('visible')
+})
+
+//login functions
+var username = localStorage.getItem("username")
+var loggedin = localStorage.getItem("loggedin")
+if (loggedin === "true") { 
+    let loginId = document.getElementById("profile-name")
+    loginId.innerHTML="Hi, "+username
+    let loggin = document.getElementById("loggin")
+    const profile = document.getElementById("profile")
+    const profileLinks = document.getElementById("profile-links")
+    profile.style.display = "block"
+    profileLinks.style.display = "block"
+    loggin.style.display = "none"
+
+document.addEventListener('click', (event) => {
+    if (event.target.id == 'logout') {
+        localStorage.setItem("loggedin", "false")
+        profile.style.display = "none"
+        profileLinks.style.display = "none"
+        loggin.style.display = "block"
+        }
+    }
+)}

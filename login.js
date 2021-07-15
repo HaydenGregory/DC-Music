@@ -1,4 +1,3 @@
-
 // Log in info
 var username = document.getElementById("login-username")
 //var password = document.getElementById("login-password")
@@ -15,7 +14,6 @@ document.addEventListener('click', (event) => {
         localStorage.setItem("loggedin", "true")
         window.location = "./index.html";
     }
-    console.log(localStorage.getItem("username"))
 })
 
 //log in function
