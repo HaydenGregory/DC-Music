@@ -38,6 +38,7 @@ Working for the first three months after launch. The student API key for Bandsin
   - Unexpected obstacles:
     - YouTube URLs delivered from the Audio DB API had a lot of variation and needed to be edited to embed on the the page. Used regular expression to grab the ID's at the end of all the varying links then created new links with the ID's.
     - Login functionality is easier to do in the back-end, and with this being a front-end project, it took some javascript ingenuity to create a similar functionality within local storage. 
+    - Adding innerHTML from two different URLs onto the same spot on the page was harder than expected. A fetch inside a fetch was needed, along with a promise.all and "...".
   - What tools did you use to implement this project?
       - HTML and CSS were built using Bootstrap. This allowed for an easy to implement, clean look. Modifications to the elements were made to achieve a clear user-interface design. Javascript was used to get and present informatyion from various APIs, aklong with adding extra functionality to oother user-experience elements such as buttons.    
 
